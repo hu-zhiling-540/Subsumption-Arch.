@@ -8,9 +8,15 @@ public class Avoid implements Behavior{
 	public ArcMoveController robot;
 	public TouchSensor bump;
 
+	/**
+	 * Constructor
+	 * @param robot
+	 * @param bump
+	 */
 	public Avoid(ArcMoveController robot, TouchSensor bump)		{
 		this.robot = robot;
 		this.bump = bump;
+		
 		
 	}
 	@Override
