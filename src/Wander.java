@@ -8,7 +8,6 @@ public class Wander implements Behavior{
 	
 	public boolean isOn = true;
 	private DifferentialPilot robot;
-//	private ArcMoveController robot;
 //	http://www.lejos.org/nxt/nxj/api/lejos/robotics/navigation/DifferentialPilot.html
 	public Wander(DifferentialPilot robot)	{
 		this.robot = robot;
@@ -21,17 +20,15 @@ public class Wander implements Behavior{
 
 	@Override
 	public void action() {
-		int angle = 0; // random
-		Motor.A.rotate(angle);
-		Motor.C.rotate(angle);
-		while (isOn)	{
-			Thread.yield();
-			Motor.A.stop();
-			Motor.C.stop();
+		int random = (int) (Math.random() * 3);
+		if (random == 0)
+			robot.forward();
+		else if (random == 1)
+			robot.backward();
+		else	{
+			int ranAngle = (1+(int) (Math.random() * 3))*90;
+			robot.rotate(ranAngle);
 		}
-//		robot.forward(); 
-//		double randomAngle;	// neg to the right, pos to the left; from -180 to 180
-//		robot.travelArc(randomAngle, distance, immediateReturn);
 	}
 
 	@Override
