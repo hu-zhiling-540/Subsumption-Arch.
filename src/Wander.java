@@ -9,7 +9,7 @@ public class Wander implements Behavior{
 	public boolean isOn = true;
 	private DifferentialPilot robot;
 //	private ArcMoveController robot;
-	
+//	http://www.lejos.org/nxt/nxj/api/lejos/robotics/navigation/DifferentialPilot.html
 	public Wander(DifferentialPilot robot)	{
 		this.robot = robot;
 	}
