@@ -3,30 +3,37 @@ import lejos.robotics.subsumption.Behavior;
 
 public class Feed implements Behavior{
 	
-	Long timeTrack;
+	Time timer;
 	Boolean flag;
-	LightSensor light;
+	LightSensor light; 
+	Boolean floodlight;
 	
-	public Feed(LightSensor light)	{
+	/**
+	 * Constructor create a light sensor object attached to the specified port, 
+	 * and sets floodlighting on or off.
+	 */
+	public Feed(LightSensor light, boolean floodlight)	{
 		this.light = light;
+		light = new LightSensor(SensorPort.S1);
 		
-	}
-	@Override
-	public boolean takeControl() {
-		// TODO Auto-generated method stub
-		return false;
+		this.floodlight = floodlight; 
+		floodlight = true; 	
+		
+		timer = new Timer(); 
 	}
 
 	@Override
 	public void action() {
 		// TODO Auto-generated method stub
+		// If the robot is over a food source 
+		if(lightsensor.getVlaue != 0) { 
+			// The robot should stop and feed for 3 seconds
+			robot.stop(); 
+			timer.schedule( )
+			
+			
+			
+		}
 		
 	}
-
-	@Override
-	public void suppress() {
-		// TODO Auto-generated method stub
-		
-	}
-
 }
