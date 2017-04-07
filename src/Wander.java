@@ -9,6 +9,11 @@ public class Wander implements Behavior{
 	public boolean isOn = true;
 	private DifferentialPilot robot;
 //	http://www.lejos.org/nxt/nxj/api/lejos/robotics/navigation/DifferentialPilot.html
+	
+	/**
+	 * Constructor
+	 * @param robot
+	 */
 	public Wander(DifferentialPilot robot)	{
 		this.robot = robot;
 	}
@@ -21,14 +26,23 @@ public class Wander implements Behavior{
 	@Override
 	public void action() {
 		int random = (int) (Math.random() * 3);
-		if (random == 0)
-			robot.forward();
-		else if (random == 1)
-			robot.backward();
-		else	{
-			int ranAngle = (1+(int) (Math.random() * 3))*90;
-			robot.rotate(ranAngle);
+		
+		try {
+			if (random == 0)
+				robot.forward();
+			else if (random == 1)
+				robot.backward();
+			else	{
+				int ranAngle = (1+(int) (Math.random() * 3))*90;
+				robot.rotate(ranAngle);
+			
+			Thread.yield();
+			Thread.sleep(1000); // Stops for a short time (one second)
+			}
 		}
+		
+		catch(InterruptedException ie) {}
+		
 	}
 
 	@Override
