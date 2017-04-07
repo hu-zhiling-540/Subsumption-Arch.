@@ -7,7 +7,6 @@ public class Avoid implements Behavior, SensorPortListener{
 	
 	public DifferentialPilot robot;
 
-//	the bot will back  up and turn away from the obstacle. 
 	public TouchSensor frontBump, backBump;
 	public boolean frontPressed, backPressed;
 	
