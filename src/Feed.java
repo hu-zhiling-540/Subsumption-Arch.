@@ -14,10 +14,11 @@ public class Feed implements Behavior{
 	DifferentialPilot robot;
 	
 	/**
-	 * Constructor create a light sensor object attached to the specified port, 
+	 * Constructor creates a light sensor object attached to the specified port, 
 	 * and sets flood lighting on or off.
 	 */
 	public Feed(LightSensor light, boolean floodlight, DifferentialPilot robot)	{
+		
 		this.robot = robot;
 		this.light = light;
 		light = new LightSensor(SensorPort.S1);
@@ -28,17 +29,26 @@ public class Feed implements Behavior{
 		timer = new Timer(); 
 	}
 
+
+	/** 
+	 * Method allows robot to stop and feed once it's over a food source. 
+	 * If lightsensors has a brightness value between 0 and 100%, with
+	 * 0 = darkness and 100 = intense sunlight (if sensors can detect and object),
+	 * then it feed for 3 seconds and repeat every 5 seconds.
+	 */
 	@Override
 	public void action() {
-		// TODO Auto-generated method stub
-		// If the robot is over a food source 
-		if(light.getLightValue()!= 0) { 
-			// The robot should stop and feed for 3 seconds
-			robot.stop(); 
-			timer.schedule(null, 0);
-			
-		}
 		
+		if(light.getLightValue()!= 0) { 
+			robot.stop(); 
+			timer.scheduleAtFixedRate(new TimerTask() { 
+				
+				@Override
+				public void run() { 
+					flag = true; 
+				}
+			}, 3000,5000); 
+		}
 	}
 
 	@Override
