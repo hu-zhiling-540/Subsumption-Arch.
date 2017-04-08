@@ -1,4 +1,4 @@
-import lejos.robotics.*;
+//import lejos.robotics.*;
 import lejos.robotics.navigation.DifferentialPilot;
 import lejos.robotics.subsumption.*; 
 import lejos.nxt.*;
@@ -30,8 +30,6 @@ public class Avoid implements Behavior, SensorPortListener{
 		// to the ports in which the bumpers are attached
 		SensorPort.S1.addSensorPortListener(this);
 		SensorPort.S4.addSensorPortListener(this);
-
-		
 	}
 
 	

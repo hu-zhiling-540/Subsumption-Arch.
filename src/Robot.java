@@ -3,9 +3,7 @@ import lejos.nxt.Motor;
 import lejos.nxt.NXTRegulatedMotor;
 import lejos.nxt.SensorPort;
 import lejos.nxt.TouchSensor;
-import lejos.robotics.navigation.ArcMoveController;
 import lejos.robotics.navigation.DifferentialPilot;
-import lejos.robotics.navigation.Move;
 import lejos.robotics.subsumption.Arbitrator;
 import lejos.robotics.subsumption.Behavior;
 
@@ -23,6 +21,8 @@ public class Robot {
 	
 	protected static NXTRegulatedMotor leftMotor = Motor.C;
 	protected static NXTRegulatedMotor rightMotor = Motor.A;
+	
+	/* update the SensorPort assignment in Avoid */
 	
 	// create a touch sensor object so that we can use a SensorListener to notify us when we  bump 
 	protected static TouchSensor frontBump = new TouchSensor(SensorPort.S1);

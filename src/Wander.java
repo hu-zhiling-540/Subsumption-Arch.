@@ -1,14 +1,12 @@
-import lejos.robotics.*;
+//import lejos.robotics.*;
 import lejos.robotics.navigation.DifferentialPilot;
-//import lejos.robotics.navigation.ArcMoveController;
 import lejos.robotics.subsumption.*; 
-import lejos.nxt.*;
+//import lejos.nxt.*;
 
 public class Wander implements Behavior{
 	
 	public boolean isOn = true;
 	private DifferentialPilot robot;
-//	http://www.lejos.org/nxt/nxj/api/lejos/robotics/navigation/DifferentialPilot.html
 	
 	
 	/**
