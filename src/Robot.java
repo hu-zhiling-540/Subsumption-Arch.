@@ -25,8 +25,8 @@ public class Robot {
 	/* update the SensorPort assignment in Avoid */
 	
 	// create a touch sensor object so that we can use a SensorListener to notify us when we  bump 
-	protected static TouchSensor frontBump = new TouchSensor(SensorPort.S1);
-	protected static TouchSensor backBump = new TouchSensor(SensorPort.S2);	
+	protected static TouchSensor frontBump = new TouchSensor(SensorPort.S2);
+//	protected static TouchSensor backBump = new TouchSensor(SensorPort.S2);	
 	protected static LightSensor light = new LightSensor(SensorPort.S3);
 
 	 
@@ -39,7 +39,7 @@ public class Robot {
     	Behavior Wander = new Wander(robot);
  
         // the Bump class implements Behavior and deals with obstacle avoidance       
-    	Behavior Avoid = new Avoid(robot, frontBump, backBump);
+    	Behavior Avoid = new Avoid(robot, frontBump);
         
     	Behavior Feed = new Feed(light);  
         

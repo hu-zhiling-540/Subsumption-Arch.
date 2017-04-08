@@ -7,8 +7,8 @@ public class Avoid implements Behavior, SensorPortListener{
 	
 	public DifferentialPilot robot;
 
-	public TouchSensor frontBump, backBump;
-	public boolean frontPressed, backPressed;
+	public TouchSensor frontBump;
+	public boolean frontPressed;
 	
 	public static final int cellD = 30;
 	
@@ -20,22 +20,22 @@ public class Avoid implements Behavior, SensorPortListener{
 	 * @param robot
 	 * @param bump
 	 */
-	public Avoid(DifferentialPilot robot, TouchSensor frontBump, TouchSensor backBump)		{
+	public Avoid(DifferentialPilot robot, TouchSensor frontBump)		{
 		this.robot = robot;
 		this.frontBump = frontBump;
-		this.backBump = backBump;
+		//0this.backBump = backBump;
 		frontPressed = false;
-		backPressed =false;
+//		backPressed =false;
 		
 		// to the ports in which the bumpers are attached
-		SensorPort.S1.addSensorPortListener(this);
-		SensorPort.S4.addSensorPortListener(this);
+		SensorPort.S2.addSensorPortListener(this);
+//		SensorPort.S4.addSensorPortListener(this);
 	}
 
 	
 	@Override
 	public boolean takeControl() {
-		return frontPressed || backPressed;
+		return frontPressed;
 	}
 
 	
@@ -75,8 +75,8 @@ public class Avoid implements Behavior, SensorPortListener{
 	public void stateChanged(SensorPort aSource, int aOldValue, int aNewValue) {
 		if (frontBump.isPressed())
 			frontPressed = true;
-		if (backBump.isPressed())
-			backPressed = true;
+//		if (backBump.isPressed())
+//			backPressed = true;
 	}
 
 }
