@@ -13,6 +13,7 @@ import lejos.robotics.subsumption.Behavior;
 
 public class Robot {
 	
+	
 	protected static final int TRAVEL_DIST = 20; 	
 	protected static double WHEEL_CIRCUM = 16.957; //in cm diam = 6.35, 5.3975
 	protected static double BASE_CIRCUM = 50; //diam = 17.145 (53.863)  - 16.51
