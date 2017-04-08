@@ -11,7 +11,8 @@ public class Avoid implements Behavior, SensorPortListener{
 	public boolean frontPressed, backPressed;
 	
 	public static final int cellD = 30;
-
+	
+	
 	/**
 	 * Constructor:
 	 * should take the  robot as a parameter, 
@@ -29,8 +30,7 @@ public class Avoid implements Behavior, SensorPortListener{
 		// to the ports in which the bumpers are attached
 		SensorPort.S1.addSensorPortListener(this);
 		SensorPort.S4.addSensorPortListener(this);
-//		this.frontBump = new TouchSensor(SensorPort.S1);
-//		this.backBump = new TouchSensor(SensorPort.S2);		
+
 		
 	}
 

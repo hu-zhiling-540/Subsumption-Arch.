@@ -10,6 +10,7 @@ public class Wander implements Behavior{
 	private DifferentialPilot robot;
 //	http://www.lejos.org/nxt/nxj/api/lejos/robotics/navigation/DifferentialPilot.html
 	
+	
 	/**
 	 * Constructor
 	 * @param robot
