@@ -11,8 +11,8 @@ import lejos.robotics.subsumption.Behavior;
 //import lejos.robotics.navigation.*; 
 //import lejos.robotics.subsumption.*; 
 
+
 public class Robot {
-	
 	
 	protected static final int TRAVEL_DIST = 20; 	
 	protected static double WHEEL_CIRCUM = 16.957; //in cm diam = 6.35, 5.3975

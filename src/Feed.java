@@ -7,6 +7,7 @@ import lejos.robotics.subsumption.Behavior;
 
 public class Feed implements Behavior{
 	
+	
 	Timer timer;
 	Boolean flag;
 	LightSensor light; 

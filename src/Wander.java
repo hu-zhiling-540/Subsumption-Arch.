@@ -5,6 +5,8 @@ import lejos.robotics.subsumption.*;
 
 public class Wander implements Behavior{
 	
+	
+	
 	public boolean isOn = true;
 	private DifferentialPilot robot;
 	

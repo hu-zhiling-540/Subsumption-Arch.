@@ -37,6 +37,7 @@ public class Avoid implements Behavior, SensorPortListener{
 	public boolean takeControl() {
 		return frontPressed;
 	}
+	
 
 	
 	@Override
