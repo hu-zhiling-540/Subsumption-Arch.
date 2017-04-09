@@ -1,4 +1,5 @@
 import java.util.Timer;
+import java.util.TimerTask;
 
 import lejos.nxt.LightSensor;
 import lejos.nxt.SensorPort;
@@ -54,13 +55,12 @@ public class Feed implements Behavior{
 
 	@Override
 	public boolean takeControl() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public void suppress() {
-		// TODO Auto-generated method stub
+		robot.stop();	
 		
 	}
 }

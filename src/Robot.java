@@ -42,7 +42,7 @@ public class Robot {
         // the Bump class implements Behavior and deals with obstacle avoidance       
     	Behavior Avoid = new Avoid(robot, frontBump);
         
-    	Behavior Feed = new Feed(light);  
+    	Behavior Feed = new Feed(light, true, robot);  
         
         // array of behaviors will be passed to arbitrator.  Order of behaviors in array specifies  priority. 
         // higher index => higher priority 

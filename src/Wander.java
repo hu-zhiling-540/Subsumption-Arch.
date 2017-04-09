@@ -5,9 +5,7 @@ import lejos.robotics.subsumption.*;
 
 public class Wander implements Behavior{
 	
-	
-	
-	public boolean isOn = true;
+//	public boolean isOn = true;
 	private DifferentialPilot robot;
 	
 	
@@ -48,7 +46,8 @@ public class Wander implements Behavior{
 
 	@Override
 	public void suppress() {
-		isOn = false;
+//		isOn = false;
+		robot.stop();	
 	}
 
 }
