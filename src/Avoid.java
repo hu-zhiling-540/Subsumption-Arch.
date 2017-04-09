@@ -15,8 +15,8 @@ public class Avoid implements Behavior, SensorPortListener{
 	
 	/**
 	 * Constructor:
-	 * should take the  robot as a parameter, 
-	 * as well as the TouchSensors.
+	 * should take the robot as a parameter, 
+	 * as well as the TouchSensor.
 	 * @param robot
 	 * @param bump
 	 */
@@ -43,20 +43,19 @@ public class Avoid implements Behavior, SensorPortListener{
 	@Override
 	public void action() {
 		try {
-			// travel backwards by a cell
-			robot.travel(-cellD,true); 
-			
-			int random = (int) Math.random() * 10;
-			if(random % 2 == 0)
-				robot.rotate(90);
-			else
-				robot.rotate(-90);
-			
 			Thread.yield();
 			Thread.sleep(1000); // Stops for a short time (one second)
 		}
-		
 		catch(InterruptedException ie) {}
+
+		// travel backwards by a cell
+		robot.travel(-cellD,true); 
+		
+		int random = (int) Math.random() * 10;
+		if(random % 2 == 0)
+			robot.rotate(90);
+		else
+			robot.rotate(-90);
 		
 	}
 
@@ -67,7 +66,7 @@ public class Avoid implements Behavior, SensorPortListener{
 	
 	
 	/**
-	 * iff either bump sensor is pressed, 
+	 * iff the bump sensor is pressed, 
 	 * @param aSource
 	 * @param aOldValue
 	 * @param aNewValue

@@ -23,7 +23,6 @@ public class Robot {
 	protected static NXTRegulatedMotor leftMotor = Motor.C;
 	protected static NXTRegulatedMotor rightMotor = Motor.A;
 	
-	/* update the SensorPort assignment in Avoid */
 	
 	// create a touch sensor object so that we can use a SensorListener to notify us when we  bump 
 	protected static TouchSensor frontBump = new TouchSensor(SensorPort.S2);
@@ -35,7 +34,7 @@ public class Robot {
     	
         // for my current robot, touch sensor is on back, so want to travel backwards as default          
     	DifferentialPilot robot = new DifferentialPilot(5.6f, 11.0f, Motor.A, Motor.C, true);         
-    	
+    	robot.setTravelSpeed(TRAVEL_DIST);
     	// the default behavior 
     	Behavior Wander = new Wander(robot);
  
@@ -51,8 +50,6 @@ public class Robot {
         //create the arbitrator 
         Arbitrator arby = new Arbitrator(bArr); 
  
-        //start the arbitrator running.  It checks to see whether  
-        // any of the behaviors should be invoked 
         arby.start(); 
     } 
 } 
