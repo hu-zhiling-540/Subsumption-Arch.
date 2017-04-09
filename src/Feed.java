@@ -3,6 +3,7 @@ import java.util.TimerTask;
 
 import lejos.nxt.LightSensor;
 import lejos.nxt.SensorPort;
+import lejos.nxt.SensorPortListener;
 import lejos.robotics.navigation.DifferentialPilot;
 import lejos.robotics.subsumption.Behavior;
 
@@ -23,7 +24,9 @@ public class Feed implements Behavior{
 		
 		this.robot = robot;
 		this.light = light;
-		light = new LightSensor(SensorPort.S1);
+		
+//		light = new LightSensor(SensorPort.S1);
+//		SensorPort.S3.addSensorPortListener((SensorPortListener) this);
 		
 		this.floodlight = floodlight; 
 		floodlight = true; 	

@@ -3,7 +3,7 @@ import lejos.robotics.navigation.DifferentialPilot;
 import lejos.robotics.subsumption.*; 
 import lejos.nxt.*;
 
-public class Avoid implements Behavior, SensorPortListener{
+public class Avoid implements Behavior{
 	
 	public DifferentialPilot robot;
 
@@ -28,14 +28,15 @@ public class Avoid implements Behavior, SensorPortListener{
 //		backPressed =false;
 		
 		// to the ports in which the bumpers are attached
-		SensorPort.S2.addSensorPortListener(this);
+//		SensorPort.S2.addSensorPortListener(this);
 //		SensorPort.S4.addSensorPortListener(this);
 	}
 
 	
 	@Override
 	public boolean takeControl() {
-		return frontPressed;
+//		return frontPressed;
+		return frontBump.isPressed();
 	}
 	
 
@@ -64,19 +65,19 @@ public class Avoid implements Behavior, SensorPortListener{
 		robot.stop();	
 	}
 	
-	
-	/**
-	 * iff the bump sensor is pressed, 
-	 * @param aSource
-	 * @param aOldValue
-	 * @param aNewValue
-	 */
-	@Override
-	public void stateChanged(SensorPort aSource, int aOldValue, int aNewValue) {
-		if (frontBump.isPressed())
-			frontPressed = true;
-//		if (backBump.isPressed())
-//			backPressed = true;
-	}
+//	
+//	/**
+//	 * iff the bump sensor is pressed, 
+//	 * @param aSource
+//	 * @param aOldValue
+//	 * @param aNewValue
+//	 */
+//	@Override
+//	public void stateChanged(SensorPort aSource, int aOldValue, int aNewValue) {
+//		if (frontBump.isPressed())
+//			frontPressed = true;
+////		if (backBump.isPressed())
+////			backPressed = true;
+//	}
 
 }
