@@ -27,20 +27,20 @@ public class Wander implements Behavior{
 		int random = (int) (Math.random() * 3);
 		
 		try {
-			if (random == 0)
-				robot.forward();
-			else if (random == 1)
-				robot.backward();
-			else	{
-				int ranAngle = (1+(int) (Math.random() * 3))*90;
-				robot.rotate(ranAngle);
-			
 			Thread.yield();
 			Thread.sleep(1000); // Stops for a short time (one second)
-			}
 		}
 		
 		catch(InterruptedException ie) {}
+		
+		if (random == 0)
+			robot.forward();
+		else if (random == 1)
+			robot.backward();
+		else	{
+			int ranAngle = (1+(int) (Math.random() * 3))*90;
+			robot.rotate(ranAngle);
+		}
 		
 	}
 
