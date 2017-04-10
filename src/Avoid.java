@@ -1,8 +1,14 @@
-//import lejos.robotics.*;
 import lejos.robotics.navigation.DifferentialPilot;
 import lejos.robotics.subsumption.*; 
 import lejos.nxt.*;
 
+
+/**
+ * the Avoid class implements Behavior, 
+ * and deals with obstacle avoidance 
+ * @author Guest
+ *
+ */
 public class Avoid implements Behavior{
 	
 	public DifferentialPilot robot;
@@ -14,70 +20,46 @@ public class Avoid implements Behavior{
 	
 	
 	/**
-	 * Constructor:
-	 * should take the robot as a parameter, 
+	 * constructor will take the robot as a parameter, 
 	 * as well as the TouchSensor.
 	 * @param robot
-	 * @param bump
+	 * @param frontBump
 	 */
-	public Avoid(DifferentialPilot robot, TouchSensor frontBump)		{
+	public Avoid(DifferentialPilot robot, TouchSensor frontBump) {
+		
 		this.robot = robot;
 		this.frontBump = frontBump;
-		//0this.backBump = backBump;
 		frontPressed = false;
-//		backPressed =false;
-		
-		// to the ports in which the bumpers are attached
-//		SensorPort.S2.addSensorPortListener(this);
-//		SensorPort.S4.addSensorPortListener(this);
+		//System.out.println("Avoid");
 	}
-
 	
 	@Override
 	public boolean takeControl() {
-//		return frontPressed;
 		return frontBump.isPressed();
 	}
 	
-
-	
 	@Override
 	public void action() {
+		
 		try {
 			Thread.yield();
-			Thread.sleep(1000); // Stops for a short time (one second)
+			Thread.sleep(1000); // stops for a short time (one second)
 		}
 		catch(InterruptedException ie) {}
 
-		// travel backwards by a cell
+		// travels backwards by a cell
 		robot.travel(-cellD,true); 
 		
-		int random = (int) Math.random() * 10;
+		int random = (int) Math.random() * 10;	// creates a random integer either even or odd
 		if(random % 2 == 0)
 			robot.rotate(90);
 		else
-			robot.rotate(-90);
-		
+			robot.rotate(-90);	
 	}
 
 	@Override
 	public void suppress() {
 		robot.stop();	
 	}
-	
-//	
-//	/**
-//	 * iff the bump sensor is pressed, 
-//	 * @param aSource
-//	 * @param aOldValue
-//	 * @param aNewValue
-//	 */
-//	@Override
-//	public void stateChanged(SensorPort aSource, int aOldValue, int aNewValue) {
-//		if (frontBump.isPressed())
-//			frontPressed = true;
-////		if (backBump.isPressed())
-////			backPressed = true;
-//	}
 
 }

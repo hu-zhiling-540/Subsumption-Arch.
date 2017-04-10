@@ -7,63 +7,66 @@ import lejos.nxt.SensorPortListener;
 import lejos.robotics.navigation.DifferentialPilot;
 import lejos.robotics.subsumption.Behavior;
 
-public class Feed implements Behavior{
+/**
+ * the Feed class implements Behavior,
+ * and uses a light sensor to check and see if our robot is over a food source
+ * @author Guest
+ *
+ */
+public class Feed implements Behavior {
 	
+	public LightSensor light; 
+	public DifferentialPilot robot;
 	
-	Timer timer;
-	Boolean flag;
-	LightSensor light; 
-	Boolean floodlight;
-	DifferentialPilot robot;
+	private long lastFeed = 0;
 	
 	/**
-	 * Constructor creates a light sensor object attached to the specified port, 
+	 * constructor creates a light sensor object attached to the specified port, 
 	 * and sets flood lighting on or off.
 	 */
-	public Feed(LightSensor light, boolean floodlight, DifferentialPilot robot)	{
+	public Feed(LightSensor light, DifferentialPilot robot)	{
 		
 		this.robot = robot;
 		this.light = light;
-		
-//		light = new LightSensor(SensorPort.S1);
-//		SensorPort.S3.addSensorPortListener((SensorPortListener) this);
-		
-		this.floodlight = floodlight; 
-		floodlight = true; 	
-		
-		timer = new Timer(); 
+		this.light.setFloodlight(true);
+
+		//System.out.println("feed");
 	}
 
 
 	/** 
-	 * Method allows robot to stop and feed once it's over a food source. 
-	 * If lightsensors has a brightness value between 0 and 100%, with
+	 * method allows robot to stop and feed once it's over a food source. 
+	 * if a light sensor has a brightness value between 0 and 100%, with
 	 * 0 = darkness and 100 = intense sunlight (if sensors can detect and object),
-	 * then it feed for 3 seconds and repeat every 5 seconds.
+	 * then it feeds for 3 seconds
 	 */
 	@Override
-	public void action() {
+	public void action() { 
 		
-		if(light.getLightValue()!= 0) { 
-			robot.stop(); 
-			timer.scheduleAtFixedRate(new TimerTask() { 
-				
-				@Override
-				public void run() { 
-					flag = true; 
-				}
-			}, 3000,5000); 
+		long rn = System.currentTimeMillis();
+		
+		try {		
+			if ((rn-lastFeed) >= 5000)	{
+				Thread.yield();
+				Thread.sleep(3000); // stops for a short time (3 seconds)
+			}
+			lastFeed = System.currentTimeMillis(); 	// updates feed finish time
 		}
+		catch(InterruptedException ie) {}
 	}
 
 	@Override
 	public boolean takeControl() {
+		// if the light source is no smaller than 80
+		if (light.readValue() >= 80)	{
+			System.out.println("Yes");
+			return true;
+		}
 		return false;
 	}
 
 	@Override
 	public void suppress() {
 		robot.stop();	
-		
 	}
 }

@@ -1,20 +1,23 @@
-//import lejos.robotics.*;
 import lejos.robotics.navigation.DifferentialPilot;
 import lejos.robotics.subsumption.*; 
-//import lejos.nxt.*;
 
+/**
+ * the Wander class implements Behavior, 
+ * and travels around and rotates randomly 
+ *
+ */
 public class Wander implements Behavior{
-	
-//	public boolean isOn = true;
-	private DifferentialPilot robot;
+
+	public DifferentialPilot robot;
 	
 	
 	/**
-	 * Constructor
+	 * constructor
 	 * @param robot
 	 */
 	public Wander(DifferentialPilot robot)	{
 		this.robot = robot;
+		//System.out.println("Wander");
 	}
 	
 	@Override
@@ -24,11 +27,11 @@ public class Wander implements Behavior{
 
 	@Override
 	public void action() {
-		int random = (int) (Math.random() * 3);
+		int random = (int) (Math.random() * 3);		// creates a random number from 0 to 2
 		
 		try {
 			Thread.yield();
-			Thread.sleep(1000); // Stops for a short time (one second)
+			Thread.sleep(1000); // stops for a short time (one second)
 		}
 		
 		catch(InterruptedException ie) {}
@@ -38,7 +41,7 @@ public class Wander implements Behavior{
 		else if (random == 1)
 			robot.backward();
 		else	{
-			int ranAngle = (1+(int) (Math.random() * 3))*90;
+			int ranAngle = (1+(int) (Math.random() * 3))*90;	// rotates at a random angle
 			robot.rotate(ranAngle);
 		}
 		
@@ -46,7 +49,6 @@ public class Wander implements Behavior{
 
 	@Override
 	public void suppress() {
-//		isOn = false;
 		robot.stop();	
 	}
 
